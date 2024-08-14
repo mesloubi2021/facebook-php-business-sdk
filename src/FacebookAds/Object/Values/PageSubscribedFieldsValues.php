@@ -27,6 +27,7 @@ class PageSubscribedFieldsValues extends AbstractEnum {
   const AWARDS = 'awards';
   const BIO = 'bio';
   const BIRTHDAY = 'birthday';
+  const CALLS = 'calls';
   const CATEGORY = 'category';
   const CHECKINS = 'checkins';
   const COMPANY_OVERVIEW = 'company_overview';
@@ -61,6 +62,7 @@ class PageSubscribedFieldsValues extends AbstractEnum {
   const MESSAGE_CONTEXT = 'message_context';
   const MESSAGE_DELIVERIES = 'message_deliveries';
   const MESSAGE_ECHOES = 'message_echoes';
+  const MESSAGE_EDITS = 'message_edits';
   const MESSAGE_MENTION = 'message_mention';
   const MESSAGE_REACTIONS = 'message_reactions';
   const MESSAGE_READS = 'message_reads';
@@ -90,6 +92,7 @@ class PageSubscribedFieldsValues extends AbstractEnum {
   const PAGE_UPCOMING_CHANGE = 'page_upcoming_change';
   const PARKING = 'parking';
   const PAYMENT_OPTIONS = 'payment_options';
+  const PAYMENT_REQUEST_UPDATE = 'payment_request_update';
   const PERSONAL_INFO = 'personal_info';
   const PERSONAL_INTERESTS = 'personal_interests';
   const PHONE = 'phone';
@@ -101,6 +104,7 @@ class PageSubscribedFieldsValues extends AbstractEnum {
   const PUBLISHER_SUBSCRIPTIONS = 'publisher_subscriptions';
   const RATINGS = 'ratings';
   const REGISTRATION = 'registration';
+  const RESPONSE_FEEDBACK = 'response_feedback';
   const SEND_CART = 'send_cart';
   const STANDBY = 'standby';
   const USER_ACTION = 'user_action';

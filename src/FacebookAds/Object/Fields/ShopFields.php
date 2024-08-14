@@ -22,16 +22,22 @@ use FacebookAds\Enum\AbstractEnum;
 
 class ShopFields extends AbstractEnum {
 
+  const COMMERCE_MERCHANT_SETTINGS = 'commerce_merchant_settings';
   const FB_SALES_CHANNEL = 'fb_sales_channel';
   const ID = 'id';
   const IG_SALES_CHANNEL = 'ig_sales_channel';
+  const IS_ONSITE_ENABLED = 'is_onsite_enabled';
+  const SHOP_STATUS = 'shop_status';
   const WORKSPACE = 'workspace';
 
   public function getFieldTypes() {
     return array(
+      'commerce_merchant_settings' => 'CommerceMerchantSettings',
       'fb_sales_channel' => 'Object',
       'id' => 'string',
       'ig_sales_channel' => 'Object',
+      'is_onsite_enabled' => 'bool',
+      'shop_status' => 'string',
       'workspace' => 'Object',
     );
   }

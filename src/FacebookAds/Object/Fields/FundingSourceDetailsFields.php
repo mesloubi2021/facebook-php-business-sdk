@@ -23,6 +23,7 @@ use FacebookAds\Enum\AbstractEnum;
 class FundingSourceDetailsFields extends AbstractEnum {
 
   const COUPON = 'coupon';
+  const COUPONS = 'coupons';
   const DISPLAY_STRING = 'display_string';
   const ID = 'id';
   const TYPE = 'type';
@@ -30,6 +31,7 @@ class FundingSourceDetailsFields extends AbstractEnum {
   public function getFieldTypes() {
     return array(
       'coupon' => 'FundingSourceDetailsCoupon',
+      'coupons' => 'list<FundingSourceDetailsCoupon>',
       'display_string' => 'string',
       'id' => 'string',
       'type' => 'int',

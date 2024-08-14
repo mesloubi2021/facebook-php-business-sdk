@@ -54,7 +54,7 @@ class PagePost extends AbstractCrudObject {
   }
 
 
-  public function getAttachments(array $fields = array(), array $params = array(), $pending = false) {
+  public function getAttachMEnts(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
@@ -294,7 +294,7 @@ class PagePost extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getSharedPosts(array $fields = array(), array $params = array(), $pending = false) {
+  public function getShareDPosts(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
@@ -390,6 +390,8 @@ class PagePost extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
+      'primary_fb_page_id' => 'string',
+      'primary_ig_user_id' => 'string',
     );
     $enums = array(
     );

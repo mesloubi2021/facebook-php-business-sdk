@@ -92,6 +92,7 @@ class ProductItemFields extends AbstractEnum {
   const SHORT_DESCRIPTION = 'short_description';
   const SIZE = 'size';
   const START_DATE = 'start_date';
+  const TAGS = 'tags';
   const URL = 'url';
   const VIDEO_FETCH_STATUS = 'video_fetch_status';
   const VISIBILITY = 'visibility';
@@ -113,9 +114,6 @@ class ProductItemFields extends AbstractEnum {
   const IPHONE_APP_STORE_ID = 'iphone_app_store_id';
   const IPHONE_URL = 'iphone_url';
   const LAUNCH_DATE = 'launch_date';
-  const OFFER_PRICE_AMOUNT = 'offer_price_amount';
-  const OFFER_PRICE_END_DATE = 'offer_price_end_date';
-  const OFFER_PRICE_START_DATE = 'offer_price_start_date';
   const RETURN_POLICY_DAYS = 'return_policy_days';
   const WINDOWS_PHONE_APP_ID = 'windows_phone_app_id';
   const WINDOWS_PHONE_APP_NAME = 'windows_phone_app_name';
@@ -161,7 +159,7 @@ class ProductItemFields extends AbstractEnum {
       'images' => 'list<string>',
       'importer_address' => 'ProductItemImporterAddress',
       'importer_name' => 'string',
-      'invalidation_errors' => 'list<Object>',
+      'invalidation_errors' => 'list<ProductItemInvalidationError>',
       'inventory' => 'int',
       'manufacturer_info' => 'string',
       'manufacturer_part_number' => 'string',
@@ -193,6 +191,7 @@ class ProductItemFields extends AbstractEnum {
       'short_description' => 'string',
       'size' => 'string',
       'start_date' => 'string',
+      'tags' => 'list<string>',
       'url' => 'string',
       'video_fetch_status' => 'VideoFetchStatus',
       'visibility' => 'Visibility',
@@ -214,9 +213,6 @@ class ProductItemFields extends AbstractEnum {
       'iphone_app_store_id' => 'unsigned int',
       'iphone_url' => 'string',
       'launch_date' => 'string',
-      'offer_price_amount' => 'unsigned int',
-      'offer_price_end_date' => 'datetime',
-      'offer_price_start_date' => 'datetime',
       'return_policy_days' => 'unsigned int',
       'windows_phone_app_id' => 'string',
       'windows_phone_app_name' => 'string',

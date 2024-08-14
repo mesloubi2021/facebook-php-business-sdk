@@ -30,6 +30,7 @@ use FacebookAds\Object\Values\AdSetMultiOptimizationGoalWeightValues;
 use FacebookAds\Object\Values\AdSetOperatorValues;
 use FacebookAds\Object\Values\AdSetOptimizationGoalValues;
 use FacebookAds\Object\Values\AdSetOptimizationSubEventValues;
+use FacebookAds\Object\Values\AdSetRegionalRegulatedCategoriesValues;
 use FacebookAds\Object\Values\AdSetStatusOptionValues;
 use FacebookAds\Object\Values\AdSetStatusValues;
 use FacebookAds\Object\Values\AdSetTuneForCategoryValues;
@@ -40,6 +41,7 @@ use FacebookAds\Object\Values\AdsInsightsBreakdownsValues;
 use FacebookAds\Object\Values\AdsInsightsDatePresetValues;
 use FacebookAds\Object\Values\AdsInsightsLevelValues;
 use FacebookAds\Object\Values\AdsInsightsSummaryActionBreakdownsValues;
+use FacebookAds\Object\Values\HighDemandPeriodBudgetValueTypeValues;
 use FacebookAds\Object\Traits\AdLabelAwareCrudObjectTrait;
 use FacebookAds\Object\Traits\ObjectValidation;
 
@@ -86,6 +88,7 @@ class AdSet extends AbstractArchivableCrudObject
     $ref_enums['FullFunnelExplorationMode'] = AdSetFullFunnelExplorationModeValues::getInstance()->getValues();
     $ref_enums['MultiOptimizationGoalWeight'] = AdSetMultiOptimizationGoalWeightValues::getInstance()->getValues();
     $ref_enums['OptimizationSubEvent'] = AdSetOptimizationSubEventValues::getInstance()->getValues();
+    $ref_enums['RegionalRegulatedCategories'] = AdSetRegionalRegulatedCategoriesValues::getInstance()->getValues();
     $ref_enums['TuneForCategory'] = AdSetTuneForCategoryValues::getInstance()->getValues();
     $ref_enums['Operator'] = AdSetOperatorValues::getInstance()->getValues();
     $ref_enums['StatusOption'] = AdSetStatusOptionValues::getInstance()->getValues();
@@ -292,6 +295,34 @@ class AdSet extends AbstractArchivableCrudObject
       new AdAsyncRequest(),
       'EDGE',
       AdAsyncRequest::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function createBudgetSchedule(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'budget_value' => 'unsigned int',
+      'budget_value_type' => 'budget_value_type_enum',
+      'time_end' => 'unsigned int',
+      'time_start' => 'unsigned int',
+    );
+    $enums = array(
+      'budget_value_type_enum' => HighDemandPeriodBudgetValueTypeValues::getInstance()->getValues(),
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_POST,
+      '/budget_schedules',
+      new HighDemandPeriod(),
+      'EDGE',
+      HighDemandPeriod::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -622,6 +653,8 @@ class AdSet extends AbstractArchivableCrudObject
       'pacing_type' => 'list<string>',
       'promoted_object' => 'Object',
       'rb_prediction_id' => 'string',
+      'regional_regulated_categories' => 'list<regional_regulated_categories_enum>',
+      'regional_regulation_identities' => 'map',
       'rf_prediction_id' => 'string',
       'start_time' => 'datetime',
       'status' => 'status_enum',
@@ -641,6 +674,7 @@ class AdSet extends AbstractArchivableCrudObject
       'multi_optimization_goal_weight_enum' => AdSetMultiOptimizationGoalWeightValues::getInstance()->getValues(),
       'optimization_goal_enum' => AdSetOptimizationGoalValues::getInstance()->getValues(),
       'optimization_sub_event_enum' => AdSetOptimizationSubEventValues::getInstance()->getValues(),
+      'regional_regulated_categories_enum' => AdSetRegionalRegulatedCategoriesValues::getInstance()->getValues(),
       'status_enum' => AdSetStatusValues::getInstance()->getValues(),
       'tune_for_category_enum' => AdSetTuneForCategoryValues::getInstance()->getValues(),
     );

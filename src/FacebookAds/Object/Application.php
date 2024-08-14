@@ -23,12 +23,13 @@ use FacebookAds\Object\Values\ApplicationAnPlatformsValues;
 use FacebookAds\Object\Values\ApplicationLoggingSourceValues;
 use FacebookAds\Object\Values\ApplicationLoggingTargetValues;
 use FacebookAds\Object\Values\ApplicationMutationMethodValues;
+use FacebookAds\Object\Values\ApplicationOwnerPermissionsValues;
+use FacebookAds\Object\Values\ApplicationPartnerPermissionsValues;
 use FacebookAds\Object\Values\ApplicationPlatformValues;
 use FacebookAds\Object\Values\ApplicationPostMethodValues;
 use FacebookAds\Object\Values\ApplicationRequestTypeValues;
 use FacebookAds\Object\Values\ApplicationSupportedPlatformsValues;
 use FacebookAds\Object\Values\DACheckConnectionMethodValues;
-use FacebookAds\Object\Values\EventTypeValues;
 
 /**
  * This class is auto-generated.
@@ -65,6 +66,8 @@ class Application extends AbstractCrudObject {
     $ref_enums['PostMethod'] = ApplicationPostMethodValues::getInstance()->getValues();
     $ref_enums['LoggingSource'] = ApplicationLoggingSourceValues::getInstance()->getValues();
     $ref_enums['LoggingTarget'] = ApplicationLoggingTargetValues::getInstance()->getValues();
+    $ref_enums['OwnerPermissions'] = ApplicationOwnerPermissionsValues::getInstance()->getValues();
+    $ref_enums['PartnerPermissions'] = ApplicationPartnerPermissionsValues::getInstance()->getValues();
     return $ref_enums;
   }
 
@@ -192,6 +195,7 @@ class Application extends AbstractCrudObject {
       'page_id' => 'unsigned int',
       'page_scoped_user_id' => 'unsigned int',
       'receipt_data' => 'string',
+      'sdk_version' => 'string',
       'ud' => 'map',
       'url_schemes' => 'list<string>',
       'user_id' => 'string',
@@ -796,30 +800,6 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getBanned(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'uid' => 'int',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/banned',
-      new User(),
-      'EDGE',
-      User::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function getButtonAutoDetectionDeviceSelection(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -923,25 +903,23 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getEvents(array $fields = array(), array $params = array(), $pending = false) {
+  public function createDomainReport(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
-      'include_canceled' => 'bool',
-      'type' => 'type_enum',
+      'tracking_domains' => 'list<string>',
     );
     $enums = array(
-      'type_enum' => EventTypeValues::getInstance()->getValues(),
     );
 
     $request = new ApiRequest(
       $this->api,
       $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/events',
-      new Event(),
+      RequestInterface::METHOD_POST,
+      '/domain_reports',
+      new AbstractCrudObject(),
       'EDGE',
-      Event::getFieldsEnum()->getValues(),
+      array(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -963,29 +941,6 @@ class Application extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_GET,
       '/iap_purchases',
-      new AbstractCrudObject(),
-      'EDGE',
-      array(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
-  public function getInsightsPushSchedule(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/insights_push_schedule',
       new AbstractCrudObject(),
       'EDGE',
       array(),
@@ -1032,9 +987,9 @@ class Application extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_GET,
       '/linked_dataset',
-      new AbstractCrudObject(),
+      new AdsDataset(),
       'EDGE',
-      array(),
+      AdsDataset::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -1053,6 +1008,7 @@ class Application extends AbstractCrudObject {
       'click_attr_window' => 'unsigned int',
       'custom_events' => 'list<Object>',
       'decline_reason' => 'string',
+      'engagement_type' => 'string',
       'event' => 'string',
       'event_reported_time' => 'unsigned int',
       'fb_ad_id' => 'unsigned int',
@@ -1581,6 +1537,63 @@ class Application extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_POST,
       '/uploads',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function createWhatsAppBusinessSolution(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'owner_permissions' => 'list<owner_permissions_enum>',
+      'partner_app_id' => 'string',
+      'partner_permissions' => 'list<partner_permissions_enum>',
+      'solution_name' => 'string',
+    );
+    $enums = array(
+      'owner_permissions_enum' => ApplicationOwnerPermissionsValues::getInstance()->getValues(),
+      'partner_permissions_enum' => ApplicationPartnerPermissionsValues::getInstance()->getValues(),
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_POST,
+      '/whatsapp_business_solution',
+      new Application(),
+      'EDGE',
+      Application::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getWhatsAppBusinessSolutions(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'role' => 'role_enum',
+    );
+    $enums = array(
+      'role_enum' => array(
+        'OWNER',
+        'PARTNER',
+      ),
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/whatsapp_business_solutions',
       new AbstractCrudObject(),
       'EDGE',
       array(),

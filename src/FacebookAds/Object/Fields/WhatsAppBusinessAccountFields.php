@@ -24,18 +24,22 @@ class WhatsAppBusinessAccountFields extends AbstractEnum {
 
   const ACCOUNT_REVIEW_STATUS = 'account_review_status';
   const ANALYTICS = 'analytics';
+  const AUTH_INTERNATIONAL_RATE_ELIGIBILITY = 'auth_international_rate_eligibility';
   const BUSINESS_VERIFICATION_STATUS = 'business_verification_status';
   const COUNTRY = 'country';
   const CREATION_TIME = 'creation_time';
   const CURRENCY = 'currency';
+  const HEALTH_STATUS = 'health_status';
   const ID = 'id';
   const IS_ENABLED_FOR_INSIGHTS = 'is_enabled_for_insights';
+  const LINKED_COMMERCE_ACCOUNT = 'linked_commerce_account';
   const MESSAGE_TEMPLATE_NAMESPACE = 'message_template_namespace';
   const NAME = 'name';
   const ON_BEHALF_OF_BUSINESS_INFO = 'on_behalf_of_business_info';
   const OWNER_BUSINESS = 'owner_business';
   const OWNER_BUSINESS_INFO = 'owner_business_info';
   const OWNERSHIP_TYPE = 'ownership_type';
+  const PRIMARY_BUSINESS_LOCATION = 'primary_business_location';
   const PRIMARY_FUNDING_ID = 'primary_funding_id';
   const PURCHASE_ORDER_NUMBER = 'purchase_order_number';
   const STATUS = 'status';
@@ -45,18 +49,22 @@ class WhatsAppBusinessAccountFields extends AbstractEnum {
     return array(
       'account_review_status' => 'string',
       'analytics' => 'Object',
+      'auth_international_rate_eligibility' => 'Object',
       'business_verification_status' => 'string',
       'country' => 'string',
       'creation_time' => 'int',
       'currency' => 'string',
+      'health_status' => 'WhatsAppBusinessHealthStatusForMessageSend',
       'id' => 'string',
       'is_enabled_for_insights' => 'bool',
+      'linked_commerce_account' => 'CommerceMerchantSettings',
       'message_template_namespace' => 'string',
       'name' => 'string',
       'on_behalf_of_business_info' => 'Object',
       'owner_business' => 'Business',
       'owner_business_info' => 'Object',
       'ownership_type' => 'string',
+      'primary_business_location' => 'string',
       'primary_funding_id' => 'string',
       'purchase_order_number' => 'string',
       'status' => 'string',

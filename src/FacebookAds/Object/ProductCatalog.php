@@ -15,6 +15,8 @@ use FacebookAds\Http\RequestInterface;
 use FacebookAds\TypeChecker;
 use FacebookAds\Object\Fields\ProductCatalogFields;
 use FacebookAds\Object\Values\CheckBatchRequestStatusErrorPriorityValues;
+use FacebookAds\Object\Values\CreatorAssetCreativeModerationStatusValues;
+use FacebookAds\Object\Values\ProductCatalogAdditionalVerticalOptionValues;
 use FacebookAds\Object\Values\ProductCatalogCategoryCategorizationCriteriaValues;
 use FacebookAds\Object\Values\ProductCatalogDataSourceIngestionSourceTypeValues;
 use FacebookAds\Object\Values\ProductCatalogDiagnosticGroupAffectedChannelsValues;
@@ -82,6 +84,7 @@ class ProductCatalog extends AbstractCrudObject {
 
   protected static function getReferencedEnums() {
     $ref_enums = array();
+    $ref_enums['AdditionalVerticalOption'] = ProductCatalogAdditionalVerticalOptionValues::getInstance()->getValues();
     $ref_enums['Vertical'] = ProductCatalogVerticalValues::getInstance()->getValues();
     $ref_enums['PermittedRoles'] = ProductCatalogPermittedRolesValues::getInstance()->getValues();
     $ref_enums['PermittedTasks'] = ProductCatalogPermittedTasksValues::getInstance()->getValues();
@@ -146,6 +149,7 @@ class ProductCatalog extends AbstractCrudObject {
       'business' => 'string',
       'permitted_roles' => 'list<permitted_roles_enum>',
       'permitted_tasks' => 'list<permitted_tasks_enum>',
+      'skip_default_utms' => 'bool',
       'utm_settings' => 'map',
     );
     $enums = array(
@@ -298,7 +302,7 @@ class ProductCatalog extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
-      'page' => 'int',
+      'page' => 'string',
     );
     $enums = array(
     );
@@ -395,29 +399,6 @@ class ProductCatalog extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getCollaborativeAdsEventStats(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/collaborative_ads_event_stats',
-      new CatalogSegmentAllMatchCountLaser(),
-      'EDGE',
-      CatalogSegmentAllMatchCountLaser::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function getCollaborativeAdsLsbImageBank(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -431,9 +412,9 @@ class ProductCatalog extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_GET,
       '/collaborative_ads_lsb_image_bank',
-      new AbstractCrudObject(),
+      new CPASLsbImageBank(),
       'EDGE',
-      array(),
+      CPASLsbImageBank::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -480,9 +461,34 @@ class ProductCatalog extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_POST,
       '/cpas_lsb_image_bank',
-      new AbstractCrudObject(),
+      new CPASLsbImageBank(),
       'EDGE',
-      array(),
+      CPASLsbImageBank::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getCreatorAssetCreatives(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'moderation_status' => 'moderation_status_enum',
+    );
+    $enums = array(
+      'moderation_status_enum' => CreatorAssetCreativeModerationStatusValues::getInstance()->getValues(),
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/creator_asset_creatives',
+      new CreatorAssetCreative(),
+      'EDGE',
+      CreatorAssetCreative::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -1268,9 +1274,6 @@ class ProductCatalog extends AbstractCrudObject {
       'material' => 'string',
       'mobile_link' => 'string',
       'name' => 'string',
-      'offer_price_amount' => 'unsigned int',
-      'offer_price_end_date' => 'datetime',
-      'offer_price_start_date' => 'datetime',
       'ordering_index' => 'unsigned int',
       'origin_country' => 'origin_country_enum',
       'pattern' => 'string',
@@ -1430,6 +1433,34 @@ class ProductCatalog extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
+  public function createVersionItemsBatch(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'allow_upsert' => 'bool',
+      'item_type' => 'string',
+      'item_version' => 'string',
+      'requests' => 'map',
+      'version' => 'unsigned int',
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_POST,
+      '/version_items_batch',
+      new ProductCatalog(),
+      'EDGE',
+      ProductCatalog::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
   public function deleteSelf(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -1496,6 +1527,7 @@ class ProductCatalog extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
+      'additional_vertical_option' => 'additional_vertical_option_enum',
       'da_display_settings' => 'Object',
       'default_image_url' => 'string',
       'destination_catalog_settings' => 'map',
@@ -1506,6 +1538,7 @@ class ProductCatalog extends AbstractCrudObject {
       'store_catalog_settings' => 'map',
     );
     $enums = array(
+      'additional_vertical_option_enum' => ProductCatalogAdditionalVerticalOptionValues::getInstance()->getValues(),
     );
 
     $request = new ApiRequest(

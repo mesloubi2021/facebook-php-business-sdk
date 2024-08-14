@@ -15,6 +15,7 @@ use FacebookAds\Http\RequestInterface;
 use FacebookAds\TypeChecker;
 use FacebookAds\Object\Fields\WhatsAppBusinessAccountFields;
 use FacebookAds\Object\Values\WhatsAppBusinessAccountCategoryValues;
+use FacebookAds\Object\Values\WhatsAppBusinessAccountDisplayFormatValues;
 use FacebookAds\Object\Values\WhatsAppBusinessAccountSubCategoryValues;
 use FacebookAds\Object\Values\WhatsAppBusinessAccountTasksValues;
 
@@ -40,6 +41,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
     $ref_enums = array();
     $ref_enums['Tasks'] = WhatsAppBusinessAccountTasksValues::getInstance()->getValues();
     $ref_enums['Category'] = WhatsAppBusinessAccountCategoryValues::getInstance()->getValues();
+    $ref_enums['DisplayFormat'] = WhatsAppBusinessAccountDisplayFormatValues::getInstance()->getValues();
     $ref_enums['SubCategory'] = WhatsAppBusinessAccountSubCategoryValues::getInstance()->getValues();
     return $ref_enums;
   }
@@ -160,11 +162,13 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
     $enums = array(
       'conversation_categories_enum' => array(
         'AUTHENTICATION',
+        'AUTHENTICATION_INTERNATIONAL',
         'MARKETING',
         'MARKETING_OPTIMIZED_DELIVERY',
         'SERVICE',
         'UNKNOWN',
         'UTILITY',
+        'UTILITY_FIXED_TEMPLATE',
       ),
       'conversation_directions_enum' => array(
         'BUSINESS_INITIATED',
@@ -212,7 +216,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getExtensions(array $fields = array(), array $params = array(), $pending = false) {
+  public function getDccConfig(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
@@ -224,45 +228,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
       $this->api,
       $this->data['id'],
       RequestInterface::METHOD_GET,
-      '/extensions',
-      new AbstractCrudObject(),
-      'EDGE',
-      array(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
-  public function createExtension(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'categories' => 'list<categories_enum>',
-      'clone_extension_id' => 'string',
-      'clone_template' => 'string',
-      'data_channel_uri' => 'string',
-      'name' => 'string',
-    );
-    $enums = array(
-      'categories_enum' => array(
-        'APPOINTMENT_BOOKING',
-        'CONTACT_US',
-        'CUSTOMER_SUPPORT',
-        'LEAD_GENERATION',
-        'OTHER',
-        'SIGN_IN',
-        'SIGN_UP',
-        'SURVEY',
-      ),
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/extensions',
+      '/dcc_config',
       new AbstractCrudObject(),
       'EDGE',
       array(),
@@ -302,8 +268,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
     $param_types = array(
       'categories' => 'list<categories_enum>',
       'clone_flow_id' => 'string',
-      'clone_template' => 'string',
-      'data_channel_uri' => 'string',
+      'endpoint_uri' => 'string',
       'name' => 'string',
     );
     $enums = array(
@@ -438,6 +403,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
       ),
       'status_enum' => array(
         'APPROVED',
+        'ARCHIVED',
         'DELETED',
         'DISABLED',
         'IN_APPEAL',
@@ -472,13 +438,17 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
       'category' => 'category_enum',
       'components' => 'list<map>',
       'cta_url_link_tracking_opted_out' => 'bool',
+      'display_format' => 'display_format_enum',
       'language' => 'string',
+      'library_template_button_inputs' => 'list<map>',
+      'library_template_name' => 'string',
       'message_send_ttl_seconds' => 'unsigned int',
       'name' => 'string',
       'sub_category' => 'sub_category_enum',
     );
     $enums = array(
       'category_enum' => WhatsAppBusinessAccountCategoryValues::getInstance()->getValues(),
+      'display_format_enum' => WhatsAppBusinessAccountDisplayFormatValues::getInstance()->getValues(),
       'sub_category_enum' => WhatsAppBusinessAccountSubCategoryValues::getInstance()->getValues(),
     );
 
@@ -667,6 +637,53 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
+  public function createSetOboMobilityIntent(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'solution_id' => 'string',
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_POST,
+      '/set_obo_mobility_intent',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getSolutions(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/solutions',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
   public function deleteSubscribedApps(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -754,6 +771,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
       ),
       'metric_types_enum' => array(
         'CLICKED',
+        'COST',
         'DELIVERED',
         'READ',
         'SENT',

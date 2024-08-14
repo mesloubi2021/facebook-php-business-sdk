@@ -23,10 +23,12 @@ use FacebookAds\Enum\AbstractEnum;
 class TargetingGeoLocationLocationExpansionFields extends AbstractEnum {
 
   const ALLOWED = 'allowed';
+  const INTENT = 'intent';
 
   public function getFieldTypes() {
     return array(
       'allowed' => 'bool',
+      'intent' => 'string',
     );
   }
 }

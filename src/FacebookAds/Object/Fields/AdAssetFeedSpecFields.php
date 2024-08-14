@@ -38,30 +38,40 @@ class AdAssetFeedSpecFields extends AbstractEnum {
   const IMAGES = 'images';
   const LINK_URLS = 'link_urls';
   const MESSAGE_EXTENSIONS = 'message_extensions';
+  const ONSITE_DESTINATIONS = 'onsite_destinations';
   const OPTIMIZATION_TYPE = 'optimization_type';
+  const PROMOTIONAL_METADATA = 'promotional_metadata';
+  const REASONS_TO_SHOP = 'reasons_to_shop';
+  const SHOPS_BUNDLE = 'shops_bundle';
   const TITLES = 'titles';
+  const UPCOMING_EVENTS = 'upcoming_events';
   const VIDEOS = 'videos';
 
   public function getFieldTypes() {
     return array(
       'ad_formats' => 'list<string>',
-      'additional_data' => 'Object',
+      'additional_data' => 'AdAssetFeedAdditionalData',
       'app_product_page_id' => 'string',
       'asset_customization_rules' => 'list<AdAssetFeedSpecAssetCustomizationRule>',
       'autotranslate' => 'list<string>',
       'bodies' => 'list<AdAssetFeedSpecBody>',
       'call_to_action_types' => 'list<CallToActionTypes>',
-      'call_to_actions' => 'list<Object>',
+      'call_to_actions' => 'list<AdAssetFeedSpecCallToAction>',
       'captions' => 'list<AdAssetFeedSpecCaption>',
-      'carousels' => 'list<Object>',
+      'carousels' => 'list<AdAssetFeedSpecCarousel>',
       'descriptions' => 'list<AdAssetFeedSpecDescription>',
-      'events' => 'list<Object>',
+      'events' => 'list<AdAssetFeedSpecEvents>',
       'groups' => 'list<AdAssetFeedSpecGroupRule>',
       'images' => 'list<AdAssetFeedSpecImage>',
       'link_urls' => 'list<AdAssetFeedSpecLinkURL>',
       'message_extensions' => 'list<AdAssetMessageExtensions>',
+      'onsite_destinations' => 'list<AdAssetOnsiteDestinations>',
       'optimization_type' => 'string',
+      'promotional_metadata' => 'Object',
+      'reasons_to_shop' => 'bool',
+      'shops_bundle' => 'bool',
       'titles' => 'list<AdAssetFeedSpecTitle>',
+      'upcoming_events' => 'list<Object>',
       'videos' => 'list<AdAssetFeedSpecVideo>',
     );
   }

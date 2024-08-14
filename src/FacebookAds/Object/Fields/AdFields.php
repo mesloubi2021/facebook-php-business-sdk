@@ -40,6 +40,7 @@ class AdFields extends AbstractEnum {
   const CONVERSION_SPECS = 'conversion_specs';
   const CREATED_TIME = 'created_time';
   const CREATIVE = 'creative';
+  const CREATIVE_ASSET_GROUPS_SPEC = 'creative_asset_groups_spec';
   const DEMOLINK_HASH = 'demolink_hash';
   const DISPLAY_SEQUENCE = 'display_sequence';
   const EFFECTIVE_STATUS = 'effective_status';
@@ -48,7 +49,6 @@ class AdFields extends AbstractEnum {
   const ID = 'id';
   const ISSUES_INFO = 'issues_info';
   const LAST_UPDATED_BY_APP_ID = 'last_updated_by_app_id';
-  const META_REWARD_ADGROUP_STATUS = 'meta_reward_adgroup_status';
   const NAME = 'name';
   const PREVIEW_SHAREABLE_LINK = 'preview_shareable_link';
   const PRIORITY = 'priority';
@@ -88,6 +88,7 @@ class AdFields extends AbstractEnum {
       'conversion_specs' => 'list<ConversionActionQuery>',
       'created_time' => 'datetime',
       'creative' => 'AdCreative',
+      'creative_asset_groups_spec' => 'AdCreativeAssetGroupsSpec',
       'demolink_hash' => 'string',
       'display_sequence' => 'int',
       'effective_status' => 'EffectiveStatus',
@@ -96,7 +97,6 @@ class AdFields extends AbstractEnum {
       'id' => 'string',
       'issues_info' => 'list<AdgroupIssuesInfo>',
       'last_updated_by_app_id' => 'string',
-      'meta_reward_adgroup_status' => 'string',
       'name' => 'string',
       'preview_shareable_link' => 'string',
       'priority' => 'unsigned int',

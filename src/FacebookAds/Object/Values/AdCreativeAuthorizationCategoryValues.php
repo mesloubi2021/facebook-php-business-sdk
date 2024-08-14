@@ -24,4 +24,5 @@ class AdCreativeAuthorizationCategoryValues extends AbstractEnum {
 
   const NONE = 'NONE';
   const POLITICAL = 'POLITICAL';
+  const POLITICAL_WITH_DIGITALLY_CREATED_MEDIA = 'POLITICAL_WITH_DIGITALLY_CREATED_MEDIA';
 }

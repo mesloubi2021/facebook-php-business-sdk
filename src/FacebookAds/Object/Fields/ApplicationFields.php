@@ -47,6 +47,8 @@ class ApplicationFields extends AbstractEnum {
   const AUTO_EVENT_MAPPING_ANDROID = 'auto_event_mapping_android';
   const AUTO_EVENT_MAPPING_IOS = 'auto_event_mapping_ios';
   const AUTO_EVENT_SETUP_ENABLED = 'auto_event_setup_enabled';
+  const AUTO_LOG_APP_EVENTS_DEFAULT = 'auto_log_app_events_default';
+  const AUTO_LOG_APP_EVENTS_ENABLED = 'auto_log_app_events_enabled';
   const BUSINESS = 'business';
   const CANVAS_FLUID_HEIGHT = 'canvas_fluid_height';
   const CANVAS_FLUID_WIDTH = 'canvas_fluid_width';
@@ -153,6 +155,8 @@ class ApplicationFields extends AbstractEnum {
       'auto_event_mapping_android' => 'list<Object>',
       'auto_event_mapping_ios' => 'list<Object>',
       'auto_event_setup_enabled' => 'bool',
+      'auto_log_app_events_default' => 'bool',
+      'auto_log_app_events_enabled' => 'bool',
       'business' => 'Business',
       'canvas_fluid_height' => 'bool',
       'canvas_fluid_width' => 'unsigned int',

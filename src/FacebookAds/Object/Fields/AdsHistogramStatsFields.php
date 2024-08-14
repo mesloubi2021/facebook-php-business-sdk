@@ -23,12 +23,26 @@ use FacebookAds\Enum\AbstractEnum;
 class AdsHistogramStatsFields extends AbstractEnum {
 
   const FIELD_1D_CLICK = '1d_click';
+  const FIELD_1D_CLICK_ALL_CONVERSIONS = '1d_click_all_conversions';
+  const FIELD_1D_CLICK_FIRST_CONVERSION = '1d_click_first_conversion';
   const FIELD_1D_EV = '1d_ev';
+  const FIELD_1D_EV_ALL_CONVERSIONS = '1d_ev_all_conversions';
+  const FIELD_1D_EV_FIRST_CONVERSION = '1d_ev_first_conversion';
   const FIELD_1D_VIEW = '1d_view';
+  const FIELD_1D_VIEW_ALL_CONVERSIONS = '1d_view_all_conversions';
+  const FIELD_1D_VIEW_FIRST_CONVERSION = '1d_view_first_conversion';
   const FIELD_28D_CLICK = '28d_click';
+  const FIELD_28D_CLICK_ALL_CONVERSIONS = '28d_click_all_conversions';
+  const FIELD_28D_CLICK_FIRST_CONVERSION = '28d_click_first_conversion';
   const FIELD_28D_VIEW = '28d_view';
+  const FIELD_28D_VIEW_ALL_CONVERSIONS = '28d_view_all_conversions';
+  const FIELD_28D_VIEW_FIRST_CONVERSION = '28d_view_first_conversion';
   const FIELD_7D_CLICK = '7d_click';
+  const FIELD_7D_CLICK_ALL_CONVERSIONS = '7d_click_all_conversions';
+  const FIELD_7D_CLICK_FIRST_CONVERSION = '7d_click_first_conversion';
   const FIELD_7D_VIEW = '7d_view';
+  const FIELD_7D_VIEW_ALL_CONVERSIONS = '7d_view_all_conversions';
+  const FIELD_7D_VIEW_FIRST_CONVERSION = '7d_view_first_conversion';
   const ACTION_BRAND = 'action_brand';
   const ACTION_CANVAS_COMPONENT_ID = 'action_canvas_component_id';
   const ACTION_CANVAS_COMPONENT_NAME = 'action_canvas_component_name';
@@ -52,18 +66,36 @@ class AdsHistogramStatsFields extends AbstractEnum {
   const INTERACTIVE_COMPONENT_STICKER_ID = 'interactive_component_sticker_id';
   const INTERACTIVE_COMPONENT_STICKER_RESPONSE = 'interactive_component_sticker_response';
   const SKAN_CLICK = 'skan_click';
+  const SKAN_CLICK_SECOND_POSTBACK = 'skan_click_second_postback';
+  const SKAN_CLICK_THIRD_POSTBACK = 'skan_click_third_postback';
   const SKAN_VIEW = 'skan_view';
+  const SKAN_VIEW_SECOND_POSTBACK = 'skan_view_second_postback';
+  const SKAN_VIEW_THIRD_POSTBACK = 'skan_view_third_postback';
   const VALUE = 'value';
 
   public function getFieldTypes() {
     return array(
       '1d_click' => 'list<int>',
+      '1d_click_all_conversions' => 'list<int>',
+      '1d_click_first_conversion' => 'list<int>',
       '1d_ev' => 'list<int>',
+      '1d_ev_all_conversions' => 'list<int>',
+      '1d_ev_first_conversion' => 'list<int>',
       '1d_view' => 'list<int>',
+      '1d_view_all_conversions' => 'list<int>',
+      '1d_view_first_conversion' => 'list<int>',
       '28d_click' => 'list<int>',
+      '28d_click_all_conversions' => 'list<int>',
+      '28d_click_first_conversion' => 'list<int>',
       '28d_view' => 'list<int>',
+      '28d_view_all_conversions' => 'list<int>',
+      '28d_view_first_conversion' => 'list<int>',
       '7d_click' => 'list<int>',
+      '7d_click_all_conversions' => 'list<int>',
+      '7d_click_first_conversion' => 'list<int>',
       '7d_view' => 'list<int>',
+      '7d_view_all_conversions' => 'list<int>',
+      '7d_view_first_conversion' => 'list<int>',
       'action_brand' => 'string',
       'action_canvas_component_id' => 'string',
       'action_canvas_component_name' => 'string',
@@ -87,7 +119,11 @@ class AdsHistogramStatsFields extends AbstractEnum {
       'interactive_component_sticker_id' => 'string',
       'interactive_component_sticker_response' => 'string',
       'skan_click' => 'list<int>',
+      'skan_click_second_postback' => 'list<int>',
+      'skan_click_third_postback' => 'list<int>',
       'skan_view' => 'list<int>',
+      'skan_view_second_postback' => 'list<int>',
+      'skan_view_third_postback' => 'list<int>',
       'value' => 'list<int>',
     );
   }

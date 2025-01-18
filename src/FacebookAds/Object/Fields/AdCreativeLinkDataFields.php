@@ -27,6 +27,7 @@ class AdCreativeLinkDataFields extends AbstractEnum {
   const APP_LINK_SPEC = 'app_link_spec';
   const ATTACHMENT_STYLE = 'attachment_style';
   const AUTOMATED_PRODUCT_TAGS = 'automated_product_tags';
+  const BOOSTED_PRODUCT_SET_ID = 'boosted_product_set_id';
   const BRANDED_CONTENT_SHARED_TO_SPONSOR_STATUS = 'branded_content_shared_to_sponsor_status';
   const BRANDED_CONTENT_SPONSOR_PAGE_ID = 'branded_content_sponsor_page_id';
   const CALL_TO_ACTION = 'call_to_action';
@@ -52,6 +53,7 @@ class AdCreativeLinkDataFields extends AbstractEnum {
   const PICTURE = 'picture';
   const POST_CLICK_CONFIGURATION = 'post_click_configuration';
   const PREFERRED_IMAGE_TAGS = 'preferred_image_tags';
+  const PREFERRED_VIDEO_TAGS = 'preferred_video_tags';
   const RETAILER_ITEM_IDS = 'retailer_item_ids';
   const SHOW_MULTIPLE_IMAGES = 'show_multiple_images';
   const STATIC_FALLBACK_SPEC = 'static_fallback_spec';
@@ -64,6 +66,7 @@ class AdCreativeLinkDataFields extends AbstractEnum {
       'app_link_spec' => 'AdCreativeLinkDataAppLinkSpec',
       'attachment_style' => 'string',
       'automated_product_tags' => 'bool',
+      'boosted_product_set_id' => 'string',
       'branded_content_shared_to_sponsor_status' => 'string',
       'branded_content_sponsor_page_id' => 'string',
       'call_to_action' => 'AdCreativeLinkDataCallToAction',
@@ -89,6 +92,7 @@ class AdCreativeLinkDataFields extends AbstractEnum {
       'picture' => 'string',
       'post_click_configuration' => 'AdCreativePostClickConfiguration',
       'preferred_image_tags' => 'list<string>',
+      'preferred_video_tags' => 'list<string>',
       'retailer_item_ids' => 'list<string>',
       'show_multiple_images' => 'bool',
       'static_fallback_spec' => 'AdCreativeStaticFallbackSpec',

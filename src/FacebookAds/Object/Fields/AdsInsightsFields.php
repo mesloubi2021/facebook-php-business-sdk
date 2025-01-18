@@ -31,7 +31,6 @@ class AdsInsightsFields extends AbstractEnum {
   const AD_ID = 'ad_id';
   const AD_IMPRESSION_ACTIONS = 'ad_impression_actions';
   const AD_NAME = 'ad_name';
-  const ADJUSTED_OFFLINE_PURCHASE = 'adjusted_offline_purchase';
   const ADSET_END = 'adset_end';
   const ADSET_ID = 'adset_id';
   const ADSET_NAME = 'adset_name';
@@ -41,6 +40,7 @@ class AdsInsightsFields extends AbstractEnum {
   const AUCTION_BID = 'auction_bid';
   const AUCTION_COMPETITIVENESS = 'auction_competitiveness';
   const AUCTION_MAX_COMPETITOR_BID = 'auction_max_competitor_bid';
+  const AVERAGE_PURCHASES_CONVERSION_VALUE = 'average_purchases_conversion_value';
   const BUYING_TYPE = 'buying_type';
   const CAMPAIGN_ID = 'campaign_id';
   const CAMPAIGN_NAME = 'campaign_name';
@@ -108,6 +108,12 @@ class AdsInsightsFields extends AbstractEnum {
   const LOCATION = 'location';
   const MARKETING_MESSAGES_COST_PER_DELIVERED = 'marketing_messages_cost_per_delivered';
   const MARKETING_MESSAGES_COST_PER_LINK_BTN_CLICK = 'marketing_messages_cost_per_link_btn_click';
+  const MARKETING_MESSAGES_DELIVERY_RATE = 'marketing_messages_delivery_rate';
+  const MARKETING_MESSAGES_LINK_BTN_CLICK_RATE = 'marketing_messages_link_btn_click_rate';
+  const MARKETING_MESSAGES_MEDIA_VIEW_RATE = 'marketing_messages_media_view_rate';
+  const MARKETING_MESSAGES_PHONE_CALL_BTN_CLICK_RATE = 'marketing_messages_phone_call_btn_click_rate';
+  const MARKETING_MESSAGES_QUICK_REPLY_BTN_CLICK_RATE = 'marketing_messages_quick_reply_btn_click_rate';
+  const MARKETING_MESSAGES_READ_RATE = 'marketing_messages_read_rate';
   const MARKETING_MESSAGES_SPEND = 'marketing_messages_spend';
   const MARKETING_MESSAGES_WEBSITE_PURCHASE_VALUES = 'marketing_messages_website_purchase_values';
   const MOBILE_APP_PURCHASE_ROAS = 'mobile_app_purchase_roas';
@@ -170,7 +176,6 @@ class AdsInsightsFields extends AbstractEnum {
       'ad_id' => 'string',
       'ad_impression_actions' => 'list<AdsActionStats>',
       'ad_name' => 'string',
-      'adjusted_offline_purchase' => 'list<Object>',
       'adset_end' => 'string',
       'adset_id' => 'string',
       'adset_name' => 'string',
@@ -180,6 +185,7 @@ class AdsInsightsFields extends AbstractEnum {
       'auction_bid' => 'string',
       'auction_competitiveness' => 'string',
       'auction_max_competitor_bid' => 'string',
+      'average_purchases_conversion_value' => 'list<AdsActionStats>',
       'buying_type' => 'string',
       'campaign_id' => 'string',
       'campaign_name' => 'string',
@@ -247,6 +253,12 @@ class AdsInsightsFields extends AbstractEnum {
       'location' => 'string',
       'marketing_messages_cost_per_delivered' => 'string',
       'marketing_messages_cost_per_link_btn_click' => 'string',
+      'marketing_messages_delivery_rate' => 'string',
+      'marketing_messages_link_btn_click_rate' => 'string',
+      'marketing_messages_media_view_rate' => 'string',
+      'marketing_messages_phone_call_btn_click_rate' => 'string',
+      'marketing_messages_quick_reply_btn_click_rate' => 'string',
+      'marketing_messages_read_rate' => 'string',
       'marketing_messages_spend' => 'string',
       'marketing_messages_website_purchase_values' => 'string',
       'mobile_app_purchase_roas' => 'list<AdsActionStats>',

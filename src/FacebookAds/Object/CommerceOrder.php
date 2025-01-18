@@ -93,7 +93,7 @@ class CommerceOrder extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function createCanCellATIOn(array $fields = array(), array $params = array(), $pending = false) {
+  public function createCancellation(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
@@ -425,34 +425,6 @@ class CommerceOrder extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_POST,
       '/update_shipment',
-      new CommerceOrder(),
-      'EDGE',
-      CommerceOrder::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
-  public function createUpdate(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'cancel_amount' => 'map',
-      'fulfill_amount' => 'map',
-      'merchant_order_reference' => 'string',
-      'refund_amount' => 'map',
-      'total_amount' => 'map',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/updates',
       new CommerceOrder(),
       'EDGE',
       CommerceOrder::getFieldsEnum()->getValues(),

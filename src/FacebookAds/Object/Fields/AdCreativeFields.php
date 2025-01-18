@@ -24,6 +24,7 @@ class AdCreativeFields extends AbstractEnum {
 
   const ACCOUNT_ID = 'account_id';
   const ACTOR_ID = 'actor_id';
+  const AD_DISCLAIMER_SPEC = 'ad_disclaimer_spec';
   const ADLABELS = 'adlabels';
   const APPLINK_TREATMENT = 'applink_treatment';
   const ASSET_FEED_SPEC = 'asset_feed_spec';
@@ -63,6 +64,7 @@ class AdCreativeFields extends AbstractEnum {
   const LINK_DESTINATION_DISPLAY_URL = 'link_destination_display_url';
   const LINK_OG_ID = 'link_og_id';
   const LINK_URL = 'link_url';
+  const MESSENGER_SPONSORED_MESSAGE = 'messenger_sponsored_message';
   const NAME = 'name';
   const OBJECT_ID = 'object_id';
   const OBJECT_STORE_URL = 'object_store_url';
@@ -77,6 +79,7 @@ class AdCreativeFields extends AbstractEnum {
   const PLATFORM_CUSTOMIZATIONS = 'platform_customizations';
   const PLAYABLE_ASSET_ID = 'playable_asset_id';
   const PORTRAIT_CUSTOMIZATIONS = 'portrait_customizations';
+  const PRODUCT_DATA = 'product_data';
   const PRODUCT_SET_ID = 'product_set_id';
   const RECOMMENDER_SETTINGS = 'recommender_settings';
   const SOURCE_INSTAGRAM_MEDIA_ID = 'source_instagram_media_id';
@@ -97,6 +100,7 @@ class AdCreativeFields extends AbstractEnum {
     return array(
       'account_id' => 'string',
       'actor_id' => 'string',
+      'ad_disclaimer_spec' => 'AdCreativeAdDisclaimer',
       'adlabels' => 'list<AdLabel>',
       'applink_treatment' => 'string',
       'asset_feed_spec' => 'AdAssetFeedSpec',
@@ -136,6 +140,7 @@ class AdCreativeFields extends AbstractEnum {
       'link_destination_display_url' => 'string',
       'link_og_id' => 'string',
       'link_url' => 'string',
+      'messenger_sponsored_message' => 'string',
       'name' => 'string',
       'object_id' => 'string',
       'object_store_url' => 'string',
@@ -150,6 +155,7 @@ class AdCreativeFields extends AbstractEnum {
       'platform_customizations' => 'AdCreativePlatformCustomization',
       'playable_asset_id' => 'string',
       'portrait_customizations' => 'AdCreativePortraitCustomizations',
+      'product_data' => 'list<AdCreativeProductData>',
       'product_set_id' => 'string',
       'recommender_settings' => 'AdCreativeRecommenderSettings',
       'source_instagram_media_id' => 'string',
